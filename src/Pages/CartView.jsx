@@ -1,10 +1,10 @@
 import React from "react";
-import bag from "/Screenshot from 2025-07-05 11-12-57.png";
+import bag from "/White_bag.avif";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 const CartView = () => {
   return (
-    <div className="min-h-screen px-4 py-8 font-sans max-w-7xl mx-auto">
+    <div className="min-h-screen px-2 py-8 font-sans max-w-7xl mx-auto">
       <h2 className="text-2xl font-semibold">Your Cart.</h2>
       <p className="text-gray-600">Review and manage the items in your shopping cart.</p>
 
@@ -147,7 +147,7 @@ const CartView = () => {
       <div className="mt-10">
         <h2 className="text-xl font-medium">Bags You may like</h2>
         <p className="text-sm text-gray-600">Similar bags from the one selected</p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6 cursor-pointer">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6 cursor-pointer">
           {[...Array(8)].map((_, i) => (
             <div key={i}>
               <img src={bag} alt="Bag" className="rounded bg-contain w-full" />
