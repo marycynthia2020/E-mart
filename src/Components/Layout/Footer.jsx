@@ -8,7 +8,7 @@ import { SiWhatsapp } from "react-icons/si";
 const Footer = () => {
   return (
     <>
-      <div className="bg-black lg:p-5 flex flex-col p-2 items-end">
+      <div className="bg-black lg:p-5 flex flex-col mt-10 p-2 items-end">
         <div className="lg:grid flex flex-col text-white lg:grid-cols-5 w-full bg-black lg:p-20">
           <div className="col-span-2 lg:p-5 flex lg:flex-col flex-col-reverse ">
             <p className="lg:text-left text-center leading-snug lg:text-lg font-light font-sans text-stone-300 pt-3">
