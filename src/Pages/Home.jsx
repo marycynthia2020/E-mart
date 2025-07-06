@@ -37,7 +37,7 @@ const Home = () => {
              <div className='bg-black w-8 p-2  rounded-2xl '></div>
              </div>
 
-             <div className='mt-64 '>
+             <div className='mt-48'>
                 <p className='text-gray-500 text-2xl'>TRENDING FANCYBAGS</p>
                 <p className='text-4xl mt-4 font-bold '>Leather FancyBags</p>
                 <p className='mt-4'>FancyBags are make of fine skin, fit for <br />everday use very strong and durable, shop now!</p>
