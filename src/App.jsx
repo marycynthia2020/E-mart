@@ -12,7 +12,7 @@ function App() {
         <Route element={<PageLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="shoppingcart" element={<ShoppingCart />} />
-          <Route path="cartview" element={<CartView />} />
+          <Route path="productdetails/:id" element={<CartView />} />
         </Route>
       </Routes>
     </div>

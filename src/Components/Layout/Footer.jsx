@@ -7,10 +7,10 @@ import { SiWhatsapp } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <>
-      <div className="bg-black lg:p-5 flex flex-col mt-10 p-2 items-end">
-        <div className="lg:grid flex flex-col text-white lg:grid-cols-5 w-full bg-black lg:p-20">
-          <div className="col-span-2 lg:p-5 flex lg:flex-col flex-col-reverse ">
+    <div className="bg-black w-full ">
+      <div className="w-[90%] max-w-[1440px] mx-auto  flex flex-col pb-4 lg:pt-20 lg:pb-32">
+        <div className="lg:grid flex flex-col text-white lg:grid-cols-5 w-full bg-black">
+          <div className="col-span-2  flex lg:flex-col flex-col-reverse ">
             <p className="lg:text-left text-center leading-snug lg:text-lg font-light font-sans text-stone-300 pt-3">
               We provide comfy tote bags that <br className="lg:hidden" /> won't{" "}
               <br className="hidden lg:block" /> mess up your style and have
@@ -19,7 +19,7 @@ const Footer = () => {
               <br className="hidden lg:block" /> your stuff.
             </p>
             <h1 className="lg:text-5xl text-2xl w-74 font-light mt-10 flex gap-2">
-              thetotebagshop
+              Shop&Smile
               <span className="border border-white size-5 flex justify-center items-center text-sm rounded-full ">
                 R
               </span>
@@ -86,12 +86,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <span className="text-stone-300 font-thin flex items-center ">
-          <FaRegCopyright /> thetotebagshop{" "}
+        <span className="text-stone-300 font-thin flex items-center self-end">
+          <FaRegCopyright /> Shop&Smile2025{" "}
           <span className="font-bold text-stone-400">2025.</span>
         </span>
       </div>
-    </>
+    </div>
   );
 };
 

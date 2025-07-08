@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body{
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
   width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden
+}
+
+/* .productgrid:nth-child(even) {
+  grid-row:  span 2 ;
+  border-radius: 50%;
+
 } */
