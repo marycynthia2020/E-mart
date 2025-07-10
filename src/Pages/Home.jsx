@@ -27,7 +27,7 @@ const Home = () => {
       </div>
 
 
-       <div className='mt-10 '>
+       <div className= "">
          <p className='text-3xl font-semibold'>Shop your favourite Products.</p>
          <p className='text-gray-500 mt-2'>We offer you the best at affordable prices</p>
       </div>

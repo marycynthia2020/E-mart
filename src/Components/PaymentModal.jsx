@@ -5,42 +5,49 @@ import { FaCcMastercard } from "react-icons/fa";
 import { FaPaypal } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 
-const PaymentModal = () => {
+const PaymentModal = ({isModalOpen, setIsModalOpen}) => {
+    const handleSubmit =()=>{
+      alert("Purchase successfull")
+    }
   return (
-    <div className='flex justify-center items-center mb-12'>
-      <div className='bg-gray-200 text-center w-[550px] h-[550px] pt-12 items-center'>
-        <h1 className='text-3xl font-semibold font-raleway'>Payment Method.</h1>
-        <p className='font-raleway text-gray-600 pt-4'>Effortlessly manage your purchases and checkout with ease.</p>
-        <div className='items-center flex gap-8 mt-4 ml-28'>
-          <RiVisaLine size={40} />
-          <FaStripe size={44} />
-          <FaCcMastercard size={32} />
-          <FaPaypal size={32} />
-          <FaApple size={32} />
-        </div>
-        <div className="pt-6">
-          <label className='font-raleway text-gray-600 text-xl pr-64'>Card Number</label> <br />
-          <input type="text" className='w-96 h-12 p-4 bg-lightcyan mt-4 border-2 border-gray-400 rounded-md' placeholder='5355 0348 5945 5045' />
-        </div>
-        <div className='mt-6 flex gap-12 justify-center'>
-          <div>
-            <label className='text-gray-600 font-raleway pr-20'>CVV</label> <br />
-            <input type="text" className='bg-lightcyan h-12 w-40 border-2 border-gray-400 rounded-md p-4 font-montserrat' placeholder='0522' />
+    // <div className='w-[90%] h-screen max-w-[1440px] mx-auto border border-red-300 relative'>
+      <div className='   absolute  transform  left-1/2 -translate-x-1/2 top-10 bg-gray-200   mx-auto  pt-10 pb-20 lg:px-20   z-[999]'>
+        <button className='absolute right-10 top-5 font-bold text-2xl cursor-pointer' onClick={()=> setIsModalOpen(false)}>X</button>
+        <form className='' onSubmit={handleSubmit}>
+          <h1 className='text-center text-2xl font-semibold font-raleway'>Payment Method.</h1>
+          <p className='font-raleway text-gray-600  text-sm mt-2 '>Effortlessly manage your purchases and checkout with ease.</p>
+          <div className='w-4/5 mx-auto items-center flex justify-between'>
+            <RiVisaLine size={40} />
+            <FaStripe size={44} />
+            <FaCcMastercard size={32} />
+            <FaPaypal size={32} />
+            <FaApple size={32} />
           </div>
-          <div>
-            <label className='text-gray-600 font-raleway pr-14'>Expires</label> <br />
-            <input type="text" className='bg-lightcyan h-12 w-44 border-2 border-gray-400 rounded-md p-4 font-montserrat' placeholder='07/06/2024' />
+          <div className="mt-2 flex flex-col mb-5">
+            <label className='font-raleway text-gray-600 text-xl'>Card Number</label>
+            <input type="text" className='outline-none h-12 p-4 bg-lightcyan  border rounded-sm' placeholder='5355 0348 5945 5045' required minLength={16} maxLength={16} />
           </div>
-        </div>
-        <div className='flex gap-2 justify-center pt-4'>
-          <input type="checkbox" className='accent-green-800 w-5 h-5' />
-          <p className='text-customGray font-montserrat'>save my debit card information</p>
-        </div>
-        <div className='mt-8'>
-          <button className='text-lightWhite bg-darkGreen w-96 h-12 rounded-md font-semibold font-raleway'>Checkout</button>
-        </div>
+          <div className='mt-2 flex items-center gap-4'>
+            <div className='flex flex-col w-1/2'>
+              <label className='text-gray-600 font-raleway'>CVV</label>
+              <input type="text" className='outline-none bg-lightcyan h-12 border rounded-sm p-4 font-montserrat' placeholder='0522' maxLength={3}  required />
+            </div>
+            <div className='flex flex-col w-1/2'>
+              <label className='text-gray-600 font-raleway'>Expires</label>
+              <input type="date" className='outline-none bg-lightcyan h-12 border rounded-sm p-4 font-montserrat' placeholder='07/06/2024' required />
+            </div>
+          </div>
+          <div className='flex gap-2 mt-2 '>
+            <input type="checkbox" className='accent-black size-4' required />
+            <p className='text-customGray font-montserrat'>save my debit card information</p>
+          </div>
+          <div className='mt-8'>
+            <button className='text-lightWhite bg-darkGreen h-10 w-full rounded-sm font-semibold font-raleway'>Checkout</button>
+          </div>
+        </form>
       </div>
-    </div>
+    // </div>
+    
   )
 }
 

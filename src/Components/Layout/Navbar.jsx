@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { LuUserRound } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 import { VscSettings } from "react-icons/vsc";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { CartContext } from "../../allcontext/Context";
 
-const Navbar = () => {
+const Navbar = ({isCartOpen, setIsCartOpen}) => {
+  const navigate = useNavigate()
+  const {cartItems} = useContext(CartContext)
+  const handleCartDisplay=()=>{
+    setIsCartOpen(!isCartOpen)
+    isCartOpen? navigate("shoppingcart"): navigate(-1)
+  }
   return (
       <div className="w-full py-4">
         <nav className=" w-[90%] mx-auto max-w-[1440px] flex justify-between items-center">
@@ -32,8 +39,9 @@ const Navbar = () => {
               {" "}
               <LuUserRound className="text-3xl  font-bold text-black" />
             </button>
-            <button>
-              <FiShoppingCart className="text-3xl font-bold text-black" />
+            <button onClick={handleCartDisplay} className="flex ">
+              <FiShoppingCart className="text-3xl font-bold text-black " />
+              {/* <span className="">{cartItems?.length}</span> */}
             </button>
 
             {/* <div className="lg:hidden flex flex-col justify-center items-end gap-[1.5px] bg-red-400">
@@ -51,7 +59,7 @@ const Navbar = () => {
           </button>
           <input
             type="text"
-            placeholder="search for your favourite totebag, colour, design patterns"
+            placeholder="search for your favourite products"
             className="focus:outline-none border-none w-full h-full pl-20"
           />
         </div>

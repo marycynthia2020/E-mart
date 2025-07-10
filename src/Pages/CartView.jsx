@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import bag from "/Screenshot from 2025-07-05 11-12-57.png";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { data } from "../data";
+import { CartContext } from "../allcontext/Context";
+import { CgArrowLeft } from "react-icons/cg";
 
-const CartView = () => {
+const CartView = ({setIsModalOpen}) => {
   const {id} = useParams()
+  const navigate = useNavigate()
+  const {cartItems, setCartItems} = useContext(CartContext)
   const foundItem = data.find(item => item.id === +id)
-  
-  
-  return (
-    <div className="w-[90%] max-w-[1440px] mx-auto">
-      <h2 className="text-2xl font-semibold">Your Cart.</h2>
-      <p className="text-gray-600">Review and manage the items in your shopping cart.</p>
+  const listOfItem = data.filter(item => item.id !== +id)
+  const [qty, setQty] = useState(0)
 
-      <div className="flex flex-col lg:flex-row gap-6 mt-6">
+  const handleAddToCart = ()=>{
+    navigate("/shoppingcart")
+    const existingItem = cartItems.find(item => item.id === foundItem.id)
+    if(existingItem){
+      existingItem.quantity = qty
+      return
+    }setCartItems(prev => [{...foundItem, quantity: qty}, ...prev])
+  }
+  return (
+    <div className="w-[90%] max-w-[1440px] mx-auto ">
+      <div><CgArrowLeft className=' bg-white p-1 text-4xl rounded-lg shadow-md w-14 cursor-pointer' onClick={()=> navigate(-1)} /></div>
+      <h2 className="text-2xl font-semibold lg:w-3/5 mx-auto mt-8">Your Cart.</h2>
+      <p className="text-gray-600 lg:w-3/5 mx-auto">Review and manage the items in your shopping cart.</p>
+
+      <div className="flex flex-col lg:flex-row gap-6 mt-6 lg:w-3/5 mx-auto">
         <div className="flex flex-col lg:w-1/2 ">
           <div className="w-full  flex items-center justify-center">
             <img
               src={foundItem.image}
               alt={foundItem.name}
-              className=" rounded-lg  aspect-square h-96"
+              className=" rounded-lg object-cover w-full  "
             />
           </div>
           <div className="flex flex-wrap gap-4 mt-6 items-center justify-center sm:justify-start text-center">
@@ -63,9 +77,9 @@ const CartView = () => {
             <div className="flex items-center gap-2">
               <span>Quantity:</span>
               <div className="flex items-center border border-gray-300 rounded px-2">
-                <button className="text-lg">+</button>
-                <span className="px-2">1</span>
-                <button className="text-lg">-</button>
+                <button className="text-lg" onClick={()=> setQty(qty +1)}>+</button>
+                <span className="px-2">{qty}</span>
+                <button className="text-lg" onClick={()=> qty >0 ? setQty(prev=> prev-1): setQty(0)}>-</button>
               </div>
             </div>
           </div>
@@ -73,10 +87,10 @@ const CartView = () => {
           <p className="text-sm text-gray-600">{foundItem.description.slice(0, 80)}....</p>
 
           <div className="flex flex-col gap-3">
-            <button className="py-2 w-full sm:w-7/12 border border-black rounded-md text-black font-medium">
+            <button className="py-2 w-full sm:w-7/12 border border-black rounded-md text-black font-medium" onClick={()=>{setIsModalOpen(true)} }>
               Buy Now
             </button>
-            <button className="py-3 bg-black text-white rounded-md font-medium w-full sm:w-7/12">
+            <button className="py-3 bg-black text-white rounded-md font-medium w-full sm:w-7/12" onClick={handleAddToCart}>
               Add to cart
             </button>
           </div>
@@ -102,12 +116,12 @@ const CartView = () => {
       </div> */}
 
       <div className="mt-4">
-        <p className="text-gray-900 text-xl font-bold">Description</p>
-        <p className="text-sm text-gray-600 mb-6">{foundItem.description}</p>
+        <p className="text-gray-900 text-xl font-bold lg:w-3/5 mx-auto">Description</p>
+        <p className="text-sm text-gray-600 mb-6 lg:w-3/5 mx-auto">{foundItem.description}</p>
 
       </div>
 
-      <div className="mt-6 max-w-2xl flex flex-col mx-auto px-4">
+      <div className="mt-6  flex flex-col lg:w-3/5 mx-auto">
         <h3 className="text-xl font-semibold">Customer Reviews</h3>
         <p className="text-gray-500 mb-6 text-sm">Customer's Testimonies</p>
 
@@ -141,7 +155,7 @@ const CartView = () => {
               </p> */}
 
               <div className="flex flex-wrap gap-3 mt-3">
-                <img src={review.image} alt={foundItem.name} className="h-24 w-24 rounded-lg border object-cover" />
+                <img src={foundItem.image} alt={foundItem.name} className="h-24 w-24 rounded-lg border object-cover" />
                 <div className="h-24 w-24 rounded-lg border flex items-center justify-center text-gray-400">+</div>
               </div>
 
@@ -153,15 +167,15 @@ const CartView = () => {
       </div>
 
       <div className="mt-10">
-        <h2 className="text-xl font-medium">Bags You may like</h2>
-        <p className="text-sm text-gray-600">Similar bags from the one selected</p>
+        <h2 className="text-xl font-medium">Products You may like</h2>
+        <p className="text-sm text-gray-600">Similar products from the one selected</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6 cursor-pointer">
-          {[...Array(8)].map((_, i) => (
-            <div key={i}>
-              <img src={bag} alt="Bag" className="rounded bg-contain w-full" />
+          {listOfItem.slice(10, 18).map(item => (
+            <div key={item.id} onClick={()=> navigate(`/productdetails/${item.id}`)} >
+              <img src={item.image} alt="Bag" className="rounded bg-contain w-full" />
               <div className="flex flex-row justify-between mt-4 text-gray-800">
-                <span>Stylish Bag</span>
-                <span>₦5,000</span>
+                <span>{item.name}</span>
+                <span>{item.price}</span>
               </div>
             </div>
           ))}

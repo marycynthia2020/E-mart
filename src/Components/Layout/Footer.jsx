@@ -7,16 +7,16 @@ import { SiWhatsapp } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <div className="bg-black w-full ">
+    <div className="bg-black w-full mt-20 ">
       <div className="w-[90%] max-w-[1440px] mx-auto  flex flex-col pb-4 lg:pt-20 lg:pb-32">
         <div className="lg:grid flex flex-col text-white lg:grid-cols-5 w-full bg-black">
           <div className="col-span-2  flex lg:flex-col flex-col-reverse ">
             <p className="lg:text-left text-center leading-snug lg:text-lg font-light font-sans text-stone-300 pt-3">
-              We provide comfy tote bags that <br className="lg:hidden" /> won't{" "}
-              <br className="hidden lg:block" /> mess up your style and have
-              plenty of
-              <br className="lg:hidden" /> space for all{" "}
-              <br className="hidden lg:block" /> your stuff.
+              We provide varieties of products that <br className="lg:hidden" /> suits{" "}
+              <br className="hidden lg:block" /> your style. With us you don't need
+              to worry about
+              {/* <br className="lg:hidden" /> about anything{" "} */}
+              <br className="hidden lg:block" />about anything We got you covered.
             </p>
             <h1 className="lg:text-5xl text-2xl w-74 font-light mt-10 flex gap-2">
               Shop&Smile
